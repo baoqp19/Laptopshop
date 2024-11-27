@@ -1,5 +1,7 @@
 package vn.laptopshop.laptopshop.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import vn.laptopshop.laptopshop.domain.User;
@@ -19,4 +21,21 @@ public class UserService {
         System.out.println(user);
         return bao;
     }
+
+    public List<User> getAllUser() {
+        return this.userRepository.findAll();
+    }
+
+    public List<User> getAllUserByEmail(String email) {
+        return this.userRepository.findAll();
+    }
+
+    public User getUserById(long id) {
+        return this.userRepository.findById(id);
+    }
+
+    public void deleteUser(long id){
+        this.userRepository.deleteById(id);
+    }
+
 }
