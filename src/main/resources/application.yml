@@ -14,8 +14,8 @@ spring:
     user:
       name: phamquocbao
       password: 123456
-
+      
   mvc:
     view:
-      prefix: /WEB-INF/views/
+      prefix: /WEB-INF/view/
       suffix: .jsp
