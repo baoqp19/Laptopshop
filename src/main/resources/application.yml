@@ -19,3 +19,10 @@ spring:
     view:
       prefix: /WEB-INF/view/
       suffix: .jsp
+
+  #default = 1MB
+  servlet:
+    multipart:
+      max-file-size: 50MB
+#default = 10 MB (form data)
+      max-request-size: 50MB

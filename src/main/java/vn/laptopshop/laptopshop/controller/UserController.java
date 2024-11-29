@@ -1,5 +1,9 @@
 package vn.laptopshop.laptopshop.controller;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -8,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.servlet.ServletContext;
 import vn.laptopshop.laptopshop.domain.User;
 import vn.laptopshop.laptopshop.service.UserService;
 
@@ -16,9 +23,11 @@ import vn.laptopshop.laptopshop.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    private final ServletContext servletContext;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, ServletContext servletContext) {
         this.userService = userService;
+        this.servletContext = servletContext;
     }
     // redirect: là kiểu F5 khi POST and delete
 
@@ -73,8 +82,29 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String getUserPage(Model model, @ModelAttribute("newUser") User user) {
-        this.userService.handleSaveUser(user);
+    public String getUserPage(Model model,
+            @RequestParam("uploadfile") MultipartFile file,
+            @ModelAttribute("newUser") User user) {
+        // this.userService.handleSaveUser(user);
+        byte[] bytes;
+        try {
+            bytes = file.getBytes();
+
+            String rootPath = this.servletContext.getRealPath("/resources/images");
+            File dir = new File(rootPath + File.separator + "avatar");
+            if (!dir.exists())
+                dir.mkdirs();
+            // Create the file on server
+            File serverFile = new File(dir.getAbsolutePath() + File.separator +
+                    +System.currentTimeMillis() + "-" + file.getOriginalFilename());
+            BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(serverFile));
+            stream.write(bytes);
+            stream.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return "redirect:/admin/user";
 
     }
