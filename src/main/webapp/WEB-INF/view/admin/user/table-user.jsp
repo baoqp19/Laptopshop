@@ -30,6 +30,7 @@
                                         <th>ID</th>
                                         <th>Email</th>
                                         <th>Full Name</th>
+                                        <th>Role</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -39,10 +40,11 @@
                                             <td>${user.id}</td> <!-- Sử dụng <td> thay vì <th> trong thân bảng -->
                                             <td>${user.email}</td>
                                             <td>${user.fullName}</td> <!-- Sửa để hiển thị fullName -->
+                                            <td>${user.role.name}</td> <!-- Sửa để hiển thị fullName -->
                                             <td>
                                                 <a href="/admin/user/${user.id}" class="btn btn-success">View</a>
                                                 <a href="/admin/user/update/${user.id}"
-                                                       class="btn btn-warning mx-2">Update</a>
+                                                    class="btn btn-warning mx-2">Update</a>
                                                 <a href="/admin/user/delete/${user.id}"
                                                     class="btn btn-danger">Delete</a>
                                             </td>
