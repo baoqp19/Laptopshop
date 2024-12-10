@@ -33,13 +33,6 @@ public class UserController {
     }
     // redirect: là kiểu F5 khi POST and delete
 
-    @GetMapping("/")
-    public String getHomePage(Model model) {
-        List<User> arrUsers = this.userService.getAllUserByEmail("1@gmail.com");
-        System.out.println(arrUsers);
-        return "hello";
-    }
-
     @GetMapping("/admin/user")
     public String getUserPage(Model model) {
         List<User> users = this.userService.getAllUser();
