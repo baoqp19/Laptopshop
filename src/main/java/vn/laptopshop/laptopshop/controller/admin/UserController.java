@@ -85,7 +85,7 @@ public class UserController {
             @ModelAttribute("newUser") @Valid User user,
             BindingResult newUserBindingResult) {
 
-        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+      List<FieldError> errors = newUserBindingResult.getFieldErrors();
         for (FieldError error : errors) {
             System.out.println(">>>>" + error.getField() + " - " + error.getDefaultMessage());
         }
