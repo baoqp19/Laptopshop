@@ -55,8 +55,12 @@ public class UserService {
         user.setFullName(resgisterDTO.getFirstName() + " " + resgisterDTO.getLastName());
         user.setEmail(resgisterDTO.getEmail());
         user.setPassword(resgisterDTO.getPassword());
-       
+
         return user;
+    }
+
+    public User getUserByEmail(String email) {
+        return this.userRepository.findByEmail(email);
     }
 
 }
