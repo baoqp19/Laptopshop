@@ -24,3 +24,11 @@ spring:
       max-file-size: 50MB
 #default = 10 MB (form data)
       max-request-size: 50MB
+
+
+#config session
+  session:
+    store-type: jdbc
+    timeout: 30m
+    jdbc:
+      initialize-schema: always
