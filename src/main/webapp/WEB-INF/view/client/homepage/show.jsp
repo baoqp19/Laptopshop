@@ -133,13 +133,19 @@
                                                             class="p-4 border border-secondary border-top-0 rounded-bottom">
                                                             <h4>${product.name}</h4>
                                                             <p>${product.shortDesc}</p>
-                                                            <div class="d-flex justify-content-between flex-lg-wrap">
+                                                            <div class="d-flex justify-content-center flex-lg-wrap">
                                                                 <p class="text-dark fs-5 fw-bold mb-0">${product.price}
                                                                 </p>
-                                                                <a href="#"
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary"><i
-                                                                        class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                                    Add to cart</a>
+                                                                <form action="/add-product-to-cart/${product.id}"
+                                                                    method="post">
+                                                                    <input type="hidden" name="${_csrf.parameterName}"
+                                                                        value="${_csrf.token}" />
+                                                                    <button
+                                                                        class="btn border border-secondary rounded-pill px-3 text-primary"><i
+                                                                            class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                                        Add to cart
+                                                                    </button>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
