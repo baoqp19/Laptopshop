@@ -28,9 +28,30 @@
                                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="#" class="my-auto">
-                                <i class="fas fa-user fa-2x"></i>
-                            </a>
+                            <div class="dropdown my-auto">
+                                <a href="#" class="dropdown" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="fas fa-user fa-2x"></i>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-menu-end p-4" aria- labelledby="dropdownMenuLink">
+
+                                    <li class="d-flex align-items-center flex-column" style="min-width: 300px;">
+                                        <img style="width: 150px; height: 150px; border-radius: 50%; overflow: hidden;"
+                                            src="/images/product/1711078092373-asus-01.png" />
+                                        <div class="text-center my-3">
+                                            bla bla bla
+                                        </div>
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Quản lý tài khoản</a></li>
+                                    <li><a class="dropdown-item" href="#">Lịch sử mua hàng</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </nav>
