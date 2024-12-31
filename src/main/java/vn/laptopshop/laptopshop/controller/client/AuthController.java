@@ -60,4 +60,10 @@ public class AuthController {
         return "client/auth/login";
     }
 
+    @GetMapping("/access-deny")
+    public String getDenyPage(Model model) {
+
+        return "client/auth/accessDeny";
+    }
+
 }
