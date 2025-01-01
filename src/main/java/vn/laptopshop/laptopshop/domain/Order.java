@@ -22,16 +22,21 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private double totalPrice;
+    private String receiverName;
 
+    private String receiverAddress;
+
+    private String receiverPhone;
+
+    private String status;
+
+    private double totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-
-     @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order")
     List<OrderDetails> orderDetails;
 
-    
 }
