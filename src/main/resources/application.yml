@@ -1,18 +1,17 @@
 spring:
-
   port: 8080
-  
+
   datasource:
-    url: jdbc:mysql://localhost:3306/shoplaptop
+    url: jdbc:mysql://127.0.0.1:3306/shoplaptop
     username: root
-    password: ""
+    password: "123456"
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-      
+
   mvc:
     view:
       prefix: /WEB-INF/view/
@@ -22,11 +21,10 @@ spring:
   servlet:
     multipart:
       max-file-size: 50MB
-#default = 10 MB (form data)
+      #default = 10 MB (form data)
       max-request-size: 50MB
 
-
-#config session
+  #config session
   session:
     store-type: jdbc
     timeout: 30m
