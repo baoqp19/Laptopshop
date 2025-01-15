@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import jakarta.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import vn.laptopshop.laptopshop.domain.CartDetail;
 import vn.laptopshop.laptopshop.domain.Order;
 import vn.laptopshop.laptopshop.domain.OrderDetails;
 import vn.laptopshop.laptopshop.domain.Product;
+import vn.laptopshop.laptopshop.domain.Product_;
 import vn.laptopshop.laptopshop.domain.User;
 import vn.laptopshop.laptopshop.repository.CartDetailRepository;
 import vn.laptopshop.laptopshop.repository.CartRepository;
@@ -52,7 +54,15 @@ public class ProductService {
         return this.productRepository.save(pr);
     }
 
-    public Page<Product> fetchProducts(Pageable page) {
+    private Specification<Product> nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
+    }
+
+    public Page<Product> fetchProducts(Pageable page, String name) {
+        return this.productRepository.findAll(this.nameLike(name), page);
+    }
+
+    public Page<Product> fetchProduct(Pageable page) {
         return this.productRepository.findAll(page);
     }
 

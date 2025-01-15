@@ -247,7 +247,7 @@
                                                         <span aria-hidden="true">&laquo;</span>
                                                     </a>
                                                 </li>
-                                                <c:forEach begin="0" end="${totalPages - 1}" varStatus="loop">
+                                                <c:forEach begin="0" end="${2 - 1}" varStatus="loop">
                                                     <li class="page-item">
                                                         <a class="${(loop.index + 1) eq currentPage ? 'active page-link' : 'page-link'}"
                                                             href="/products?page=${loop.index + 1}">

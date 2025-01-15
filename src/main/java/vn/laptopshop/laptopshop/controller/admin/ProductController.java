@@ -50,8 +50,9 @@ public class ProductController {
             // page = 1
             // TODO: handle exception
         }
+
         Pageable pageable = PageRequest.of(page - 1, 2);
-        Page<Product> prs = this.productService.fetchProducts(pageable);
+        Page<Product> prs = this.productService.fetchProduct(pageable);
         List<Product> listProducts = prs.getContent();
         model.addAttribute("products", listProducts);
 
@@ -96,7 +97,7 @@ public class ProductController {
     @PostMapping("/admin/product/update")
     public String handleUpdateProduct(@ModelAttribute("newProduct") @Valid Product pr,
             BindingResult newProductBindingResult,
-            @RequestParam("hoidanitFile") MultipartFile file) {
+            @RequestParam("QuocBaoFile") MultipartFile file) {
 
         // validate
         if (newProductBindingResult.hasErrors()) {
