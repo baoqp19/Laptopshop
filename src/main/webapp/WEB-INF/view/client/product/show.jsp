@@ -195,6 +195,9 @@
                                     </div>
                                     <div class="col-12 col-md-8 text-center">
                                         <div class="row g-4">
+                                            <c:if test="${totalPages ==  0}">
+                                                <div>Không tìm thấy sản phẩm</div>
+                                            </c:if>
                                             <c:forEach var="product" items="${products}">
                                                 <div class="col-md-6 col-lg-4">
                                                     <div class="rounded position-relative fruite-item">
@@ -239,7 +242,7 @@
                                                     </div>
                                                 </div>
                                             </c:forEach>
-
+                                            <c:if test="${totalPages > 0}">
                                             <div class="pagination d-flex justify-content-center mt-5">
                                                 <li class="page-item">
                                                     <a class="${1 eq currentPage ? 'disabled page-link' : 'page-link'}"
@@ -263,6 +266,7 @@
                                                 </li>
 
                                             </div>
+                                        </c:if>
                                         </div>
                                     </div>
                                 </div>
